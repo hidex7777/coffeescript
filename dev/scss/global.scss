@@ -1,0 +1,166 @@
+@charset "utf-8";
+@import "mixins.scss";
+@import "pccs.scss";
+//global.scss
+//color-sheme: variables see _pccs.scss
+$base: $pp24;//base-color = 70%
+$asso: $v24;//assort-color = 25%
+$acce: $Bk;//accent-color = 5%
+$text: $Bk;//text-color
+$link: $v20;//link-color
+$linkh: $lt20;//link-hover-color
+
+a, a:visited {
+	color: $link;
+	text-decoration: none;
+	transition: 0.5s;
+}
+a:hover {
+	color: $linkh;
+	//text-decoration: underline;
+}
+
+//global layout
+html {
+	font:{
+		size: 16px;
+		family: sans-serif;
+		weight: 400;
+	}
+	body {
+		background:{
+			color: $base;
+		}
+		color: $text;
+		p {
+			margin-bottom: 14px;
+		}
+		.container {
+			.header {
+				padding: 15px;
+			}
+			.heading1 {
+				font:{
+					family: 'Comfortaa', cursive;
+					weight: 700;
+					size: 32px;
+				}
+				color: $acce;
+			}
+			.heading2 {
+				font:{
+					family: 'Comfortaa', cursive;
+					weight: 700;
+					size: 24px;
+				}
+				border-left: 3px solid $acce;
+				padding-left: 5px;
+				margin:{
+					left: 3px;
+					top: 14px;
+					bottom: 15px;
+				}
+			}
+			.headline {
+				margin-bottom: 20px;
+			}
+			.main {
+				padding: 15px;
+				ul {
+					list-style: none;
+					overflow: hidden;
+					li {
+						float: left;
+						width: 312px;
+						height: 400px;
+						margin:{
+							left: 15px;
+							bottom: 15px;
+						}
+						background-color: $W;
+						border-radius: 5px;
+						a {
+							display: block;
+							width: 300px;
+							margin: 5px auto 0;
+							img {
+								border: 1px solid $mGy;
+								border-radius: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.footer {
+		padding: 15px 15px 5px;
+		.copyright {
+			text-align: center;
+			font:{
+				size: 14px;
+			}
+			color: $dkGy;
+		}
+	}
+}
+
+//phone style 0 ~ 479
+body {
+	.container {
+		padding: 0 5px;
+		.header {
+
+		}
+		.main {
+			
+		}
+
+	}
+	.footer {
+		background-color: $asso;
+		.copyright {
+		}
+	}
+}
+
+//tablet style
+@media all and (min-width: 480px){
+	body {
+		.container {
+			.header {
+
+			}
+			.main {
+				
+			}
+		}
+		.footer {
+				
+		}
+	}
+}
+
+//desktop style
+@media all and (min-width: 768px){
+//desktop style 769 ~ 
+	body {
+		.container {
+			
+			
+			.header {
+
+			}
+
+			
+			.main {
+				
+			}
+		}
+		.footer {
+			.copyright {
+				
+			}
+		}
+	}
+}

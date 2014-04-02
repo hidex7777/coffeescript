@@ -1,0 +1,53 @@
+//variables
+$dropwhite:0 1px 0 rgba(255, 255, 255, 0.75);
+$droppink:0 1px 0 #e8c2bf;
+$dropbrown:0 1px 0 rgba(218, 146, 122, 0.75);
+$dropgray:0 1px 0 rgba(0, 0, 0, 0.5);
+$dropblack:0 1px 0 rgba(0, 0, 0, 0.75);
+$dropyellow: 0 1px 0 rgba(68, 62, 48, 0.75);
+
+$ensans: Helvetica, Tahoma, Verdana;
+$jasans: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Meiryo, 'メイリオ';
+$monospace: 'Bitstream Vera Sans Mono', Monaco, Consolas, 'Dejavu Sans Mono';
+$enserif: 'Times', 'Times New Roman', 'Linux Libertine';
+$w8: 80%;
+
+//mixins
+
+@mixin br($length){
+border-radius:$length;
+-moz-border-radius:$length;
+}
+
+@mixin boxupdown($length){
+box-shadow:0 (-1 * $length) $length rgba(150, 150, 150, 0.6), 0 $length $length rgba(150, 150, 150, 0.6);
+-webkit-box-shadow:0 (-1 * $length) $length rgba(150, 150, 150, 0.6), 0 $length $length rgba(150, 150, 150, 0.6);
+-moz-box-shadow:0 (-1 * $length) $length rgba(150, 150, 150, 0.6), 0 $length $length rgba(150, 150, 150, 0.6);
+}
+
+@mixin boxsh($length){
+box-shadow:$length $length $length rgba(150, 150, 150, 0.6);
+-webkit-box-shadow:$length $length $length rgba(150, 150, 150, 0.6);
+-moz-box-shadow:$length $length $length rgba(150, 150, 150, 0.6);
+}
+
+@mixin boxinset($length){
+box-shadow:$length $length $length rgba(80, 80, 80, 0.6) inset;
+-webkit-box-shadow:$length $length $length rgba(80, 80, 80, 0.6) inset;
+-moz-box-shadow:$length $length $length rgba(80, 80, 80, 0.6) inset;
+}
+
+@mixin rotate($deg){
+-webkit-transform: rotate($deg);
+-moz-transform: rotate($deg);
+-o-transform: rotate($deg);
+-ms-transform: rotate($deg);
+transform: rotate($deg);
+}
+
+@mixin w8{
+width: 80%;
+}
+@mixin w9{
+width: 90%;
+}
