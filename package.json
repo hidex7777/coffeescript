@@ -1,0 +1,32 @@
+{
+  "name": "responsive_template",
+  "version": "0.0.0",
+  "description": "responsive web template consists of htm, scss, grunt, coffee and some images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hidex7777/responsive_template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hidex7777/responsive_template/issues"
+  },
+  "homepage": "https://github.com/hidex7777/responsive_template",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-autoprefixer": "~0.7.2",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-csslint": "~0.2.0",
+    "grunt-contrib-compass": "~0.7.2",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-contrib-jshint": "~0.9.2",
+    "grunt-csscomb": "~2.0.1"
+  }
+}
