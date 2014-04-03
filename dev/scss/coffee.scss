@@ -1,0 +1,68 @@
+@charset "utf-8";
+@import "mixins.scss";
+@import "pccs.scss";
+//coffee.scss
+//color-sheme: variables see _pccs.scss
+$base: $pp24;//base-color = 70%
+$asso: $v24;//assort-color = 25%
+$acce: $Bk;//accent-color = 5%
+$text: $Bk;//text-color
+$link: $v20;//link-color
+$linkh: $lt20;//link-hover-color
+a, a:visited {
+	color: $link;
+	text-decoration: none;
+	transition: 0.5s;
+}
+a:hover {
+	color: $linkh;
+}
+//global layout
+html {
+	body {
+		background:{
+			color: $base;
+		}
+		color: $text;
+		font:{
+			family: sans-serif;
+		}
+		.header {
+			.heading1 {
+				font:{
+					family: 'Comfortaa', cursive;
+					weight: 700;
+					size: 32px;
+				}
+			}
+		}
+		.main {
+			width: 90%;
+			margin: 0 auto;
+			.stage {
+				.big128 {
+					text-align: right;
+					font:{
+						family: 'Comfortaa', cursive;
+						weight: 700;
+						size: 128px;
+					}
+				}
+			}
+		}
+		.footer {
+			margin: 0;
+			width: 100%;
+			background:{
+				color: $asso;
+			}
+			.copyright {
+				text-align: center;
+				font:{
+					size: 14px;
+				}
+				color: $ltGy;
+			}
+		}
+	}
+}

@@ -16,12 +16,16 @@ module.exports = (grunt) ->
 			options:
 				browsers: [ "last 100 version", "ie 8", "ie 9" ]
 			dev:
-				src: "<%= dir.dist %>/css/global.css"
-				dest: "<%= dir.dist %>/css/global.css"
+				expand: true
+				flatten: true
+				src: "<%= dir.dist %>/css/*.css"
+				dest: "<%= dir.dist %>/css/"
 		csscomb:
 			dev:
+				expand: true
+				flatten: true
 				src: "<%= autoprefixer.dev.src %>"
-				dest: "<%= autoprefixer.dev.src %>"
+				dest: "<%= autoprefixer.dev.dest %>"
 		csslint:
 			check:
 				src: "<%= autoprefixer.dev.src %>"
@@ -53,7 +57,7 @@ module.exports = (grunt) ->
 				options:
 					port: 80
 		watch:
-			files: ["<%= dir.src %>/**/*.scss", "<%= dir.src %>/**/*.coffee"]
+			files: ["dev/scss/*.scss", "dev/coffee/*.coffee"]
 			tasks: ["compass", "copy:spritesImg", "autoprefixer", "csscomb", "clean:deleteSprites", "coffee", "jshint", "csslint"]
 
 	#plugin
