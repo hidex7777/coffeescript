@@ -1,91 +1,63 @@
 (function() {
   'use strict';
-  var Reset, Run, Stop, Timer, running, startTime, stopTime, timerId;
-
-  running = false;
-
-  startTime = 0.00;
+  var reset, run, running, startTime, stop, stopTime, timer, timerId;
 
   stopTime = 0.00;
 
-  timerId = void 0;
+  startTime = 0.00;
 
-  Run = (function() {
-    function Run() {}
+  running = false;
 
-    Run.prototype.run = function() {
-      if (running) {
-        return;
-      }
-      running = true;
-      if (stopTime) {
-        startTime = startTime + (new Date()).getTime() - stopTime;
-      }
-      if (!startTime) {
-        startTime = (new Date()).getTime();
-      }
-      return Timer.timer();
-    };
+  timerId = 0;
 
-    return Run;
+  run = function() {
+    if (running) {
+      return;
+    }
+    running = true;
+    if (stopTime) {
+      startTime = startTime + (new Date()).getTime() - stopTime;
+    }
+    if (!startTime) {
+      startTime = (new Date()).getTime();
+    }
+    return timer();
+  };
 
-  })();
+  timer = function() {
+    $('#sec').html((((new Date()).getTime() - startTime) / 1000).toFixed(2));
+    timerId = setTimeout(function() {
+      timer();
+    }, 100);
+  };
 
-  Timer = (function() {
-    function Timer() {}
+  stop = function() {
+    if (!running) {
+      return false;
+    }
+    running = false;
+    clearTimeout(timerId);
+    stopTime = (new Date()).getTime();
+  };
 
-    Timer.prototype.timer = function() {
-      $('#sec').html((((new Date()).getTime() - startTime) / 1000).toFixed(2));
-      timerId = setTimeout(function() {
-        Timer.timer();
-      }, 100);
-    };
-
-    return Timer;
-
-  })();
-
-  Stop = (function() {
-    function Stop() {}
-
-    Stop.prototype.stop = function() {
-      if (!running) {
-        return false;
-      }
-      running = false;
-      clearTimeout(timerId);
-      stopTime = (new Date()).getTime();
-    };
-
-    return Stop;
-
-  })();
-
-  Reset = (function() {
-    function Reset() {}
-
-    Reset.prototype.reset = function() {
-      if (running) {
-        return;
-      }
-      startTime = void 0;
-      return $('#sec').html('0.00');
-    };
-
-    return Reset;
-
-  })();
+  reset = function() {
+    if (running) {
+      return;
+    }
+    startTime = void 0;
+    return $('#sec').html('0.00');
+  };
 
   $('#run').click(function() {
-    Run.run();
+    run();
   });
 
   $('#stop').click(function() {
-    Stop.stop();
+    stop();
   });
 
   $('#reset').click(function() {
-    Reset.reset();
+    reset();
   });
 
 }).call(this);

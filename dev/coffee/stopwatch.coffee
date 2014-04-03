@@ -1,53 +1,49 @@
 #stopwatch coffee
 'use strict'
 
-running = false
-startTime = 0.00
 stopTime = 0.00
-timerId = undefined
+startTime = 0.00
+running = false
+timerId = 0
 
-class Run
-	run: ->
-		if running
-			return
-		running = true
-		if stopTime
-			startTime = startTime + (new Date()).getTime() - stopTime
-		if !startTime
-			startTime = (new Date()).getTime()
-		Timer.timer()
-
-class Timer
-	timer: ->
-		$('#sec').html((((new Date()).getTime() - startTime) / 1000).toFixed(2))
-		timerId = setTimeout ->
-			Timer.timer()
-			return
-		,100
+run = ->
+	if running
 		return
+	running = true
+	if stopTime
+		startTime = startTime + (new Date()).getTime() - stopTime
+	if !startTime
+		startTime = (new Date()).getTime()
+	timer()
 
-class Stop
-	stop: ->
-		if !running
-			return false
-		running = false
-		clearTimeout(timerId)
-		stopTime = (new Date()).getTime()
+timer = ->
+	$('#sec').html((((new Date()).getTime() - startTime) / 1000).toFixed(2))
+	timerId = setTimeout ->
+		timer()
 		return
+	,100
+	return
 
-class Reset
-	reset: ->
-		if running
-			return
-		startTime = undefined
-		$('#sec').html('0.00')
+stop = ->
+	if !running
+		return false
+	running = false
+	clearTimeout(timerId)
+	stopTime = (new Date()).getTime()
+	return
+
+reset = ->
+	if running
+		return
+	startTime = undefined
+	$('#sec').html('0.00')
 
 $('#run').click ->
-	Run.run()
+	run()
 	return
 $('#stop').click ->
-	Stop.stop()
+	stop()
 	return
 $('#reset').click ->
-	Reset.reset()
+	reset()
 	return

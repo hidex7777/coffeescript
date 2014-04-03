@@ -34,7 +34,7 @@ html body .main
 }
 html body .main .stage .big128
 {
-    font-family: 'Comfortaa', cursive;
+    font-family: monospace;
     font-size: 128px;
     font-weight: 700;
 
