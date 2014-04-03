@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Stop Watch</title>
+	<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/coffee.css">
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="header">
+	<h1 class="heading1">
+		Stop Watch
+
+	</h1>
+</div><!-- /.header -->
+<div class="main">
+	<div id="sec" style="font-size:128px;">0.00</div>
+	<input type="button" value="START" id="run">
+	<input type="button" value="STOP" id="stop">
+	<input type="button" value="RESET" id="reset">
+<script>
+(function(){
+	var startTime, stopTime, running = false, timerId;
+	document.getElementById('run').onclick = function(){
+		run();
+	}
+	document.getElementById('stop').onclick = function(){
+		stop();
+	}
+	document.getElementById('reset').onclick = function(){
+		reset();
+	}
+	function run(){
+		if (running) return;
+		running = true;
+		if (stopTime){
+			startTime = startTime + (new Date()).getTime() - stopTime;
+		}
+		if (!startTime){
+			startTime = (new Date()).getTime();
+		}
+		timer();
+	}
+	function timer(){
+		document.getElementById('sec').innerHTML = (((new Date()).getTime() - startTime) / 1000).toFixed(2);
+		timerId = setTimeout(function(){
+			timer();
+		}, 100);
+	}
+	function stop(){
+		if (!running) return false;
+		running = false;
+		clearTimeout(timerId);
+		stopTime = (new Date()).getTime();
+	}
+	function reset(){
+		if (running) return;
+		startTime = undefined;
+		document.getElementById('sec').innerHTML = '0.00';
+	}
+})();
+</script>
+</div><!-- /.main -->
+<div class="footer">
+	
+
+		<div class="copyright">
+			<p>&copy; hidex7777 2014</p>
+		</div>
+</div><!-- /.footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</body>
+</html>
