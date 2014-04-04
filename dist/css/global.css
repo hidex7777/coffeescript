@@ -29,15 +29,44 @@ html body p
 {
     margin-bottom: 14px;
 }
-html body .container .header
+html body .container .header .nav
 {
-    padding: 15px;
+    width: 100%;
+    height: 50px;
+
+    background-color: #ad2e6c;
+}
+html body .container .header .nav .home
+{
+    height: 50px;
+    margin-left: 50px;
+}
+html body .container .header .nav .home .brand
+{
+    font-size: 20px;
+    font-weight: bold;
+
+    display: block;
+
+    width: 100px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+
+    text-align: center;
+
+    color: black;
+}
+html body .container .header .nav .home .brand:hover
+{
+    background-color: #861d55;
 }
 html body .container .heading1
 {
     font-family: 'Comfortaa', cursive;
     font-size: 32px;
     font-weight: 700;
+
+    padding: 15px 0 15px 30px;
 
     color: black;
 }
@@ -60,17 +89,18 @@ html body .container .headline
 }
 html body .container .main
 {
-    padding: 15px;
+    width: 90%;
+    margin: 0 auto;
 }
 html body .container .main ul
 {
-    overflow: hidden;
+    margin: 0 auto;
 
     list-style: none;
 }
 html body .container .main ul li
 {
-    float: left;
+    display: inline-block;
 
     width: 312px;
     height: 400px;
@@ -109,10 +139,6 @@ html .footer .copyright
     color: #3f3f3f;
 }
 
-body .container
-{
-    padding: 0 5px;
-}
 body .footer
 {
     background-color: #ad2e6c;
