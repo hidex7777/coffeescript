@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Age Counter</title>
+	<link rel="icon" href="../favicon.ico" sizes="16x16">
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.15.0/build/cssreset/cssreset-min.css">
+	<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/coffee.css">
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="header">
+	<div class="nav">
+		<div class="home"><a href="../">HOME</a></div>
+	</div><!-- /.nav -->
+	<h1 class="heading1">
+		Age Counter
+	</h1>
+</div><!-- /.header -->
+<div class="main">
+	<div class="stage">
+		<p>誕生日：<input type="text" name="birthday" id="birthday" value="1984-12-24"></p>
+		<input type="button" value="計算" id="run" onclick="getAge();">
+		<p id="result"></p>
+		<br>
+	</div><!-- /.stage -->
+</div><!-- /.main -->
+<div class="footer">
+	<p>Hello World</p>
+	<p>Hello World</p>
+	<p>Hello World</p>
+	<p>Hello World</p>
+	<p>Hello World</p>
+		<div class="copyright">
+			<p>&copy; hidex7777 2014</p>
+		</div>
+</div><!-- /.footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+	function getAge(){
+		var birthday = $('#birthday').val();
+		//console.log(birthday);
+		var d1 = new Date(birthday);
+		var d2 = new Date();
+		var diff = d2.getTime() - d1.getTime();
+		var daysPast = Math.floor(diff / (1000 * 60 * 60 * 24));
+		//alert(daysPast + "日経過！");
+		var age = Math.floor(daysPast / 365.25);
+		$('#result').html("生まれてから" + daysPast + "日経過していて、だいたい" + age + "歳");
+	}
+	
+</script>
+</body>
+</html>
