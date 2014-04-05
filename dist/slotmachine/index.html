@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Slot Machine</title>
+	<link rel="icon" href="../favicon.ico" sizes="16x16">
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.15.0/build/cssreset/cssreset-min.css">
+	<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/coffee.css">
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<style>
+.stage {
+	overflow: hidden;
+}
+.col {
+	float: left;
+	width: 100px;
+	text-align: center;
+
+}
+.col span {
+		font-size: 32px;
+}
+
+	</style>
+
+</head>
+<body>
+<div class="header">
+	<div class="nav">
+		<div class="home"><a href="../" class="brand">HOME</a></div>
+	</div><!-- /.nav -->
+	<h1 class="heading1">
+		Slot Machine
+	</h1>
+</div><!-- /.header -->
+<div class="main">
+	<div class="stage">
+		<div class="col">
+			<span id="num0">7</span><br>
+			<input type="button" value="STOP" id="stop0">
+		</div>
+		<div class="col">
+			<span id="num1">7</span><br>
+			<input type="button" value="STOP" id="stop1">
+		</div>
+		<div class="col">
+			<span id="num2">7</span><br>
+			<input type="button" value="STOP" id="stop2">
+		</div>
+	</div><!-- /.stage -->
+</div><!-- /.main -->
+<div class="footer">
+	<p>Hello World</p>
+	<p>Hello World</p>
+	<p>Hello World</p>
+	<p>Hello World</p>
+	<p>Hello World</p>
+		<div class="copyright">
+			<p>&copy; hidex7777 2014</p>
+		</div>
+</div><!-- /.footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+	var timers,
+		nums,
+		stopCount;
+	function startSlot(){
+		timers = [];
+		nums = [];
+		stopCount = 0;
+
+		runSlot(0);
+		runSlot(1);
+		runSlot(2);
+	}
+	function stopSlot(n){
+		//if (nums[n] != undefined){
+		//javascript undefined 判定
+		if (typeof nums[n] !== 'undefined'){
+			return;
+		}
+		clearTimeout(timers[n]);
+		nums[n] = $('#num' + n).html();
+		stopCount++;
+
+		if (stopCount == 3) {
+			checkSlot();
+		}
+	}
+	function checkSlot(){
+		//alert("check");
+		nums.sort();
+		if (nums[0] == nums[1] && nums[0] == nums[2]){
+			alert("全部揃った！");
+		}else if (nums[0] == nums[1] || nums[1] == nums[2]){
+			alert("2つ揃った！");
+		}else{
+			alert("残念");
+		}
+
+	}
+	function runSlot(n){
+		$('#num' + n).html(Math.floor(Math.random() * 10));
+		timers[n] = setTimeout(function(){
+			runSlot(n);
+		}, 50);
+	}
+	startSlot();
+	$('#stop0').click(function(){
+		stopSlot(0);
+	});
+	$('#stop1').click(function(){
+		stopSlot(1);
+	});
+	$('#stop2').click(function(){
+		stopSlot(2);
+	});
+</script>
+</body>
+</html>
