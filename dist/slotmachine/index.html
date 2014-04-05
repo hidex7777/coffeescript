@@ -53,6 +53,7 @@
 			<span id="num2">7</span><br>
 			<input type="button" value="STOP" id="stop2">
 		</div>
+		<p id="result">結果</p>
 	</div><!-- /.stage -->
 </div><!-- /.main -->
 <div class="footer">
@@ -66,61 +67,6 @@
 		</div>
 </div><!-- /.footer -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>
-	var timers,
-		nums,
-		stopCount;
-	function startSlot(){
-		timers = [];
-		nums = [];
-		stopCount = 0;
-
-		runSlot(0);
-		runSlot(1);
-		runSlot(2);
-	}
-	function stopSlot(n){
-		//if (nums[n] != undefined){
-		//javascript undefined 判定
-		if (typeof nums[n] !== 'undefined'){
-			return;
-		}
-		clearTimeout(timers[n]);
-		nums[n] = $('#num' + n).html();
-		stopCount++;
-
-		if (stopCount == 3) {
-			checkSlot();
-		}
-	}
-	function checkSlot(){
-		//alert("check");
-		nums.sort();
-		if (nums[0] == nums[1] && nums[0] == nums[2]){
-			alert("全部揃った！");
-		}else if (nums[0] == nums[1] || nums[1] == nums[2]){
-			alert("2つ揃った！");
-		}else{
-			alert("残念");
-		}
-
-	}
-	function runSlot(n){
-		$('#num' + n).html(Math.floor(Math.random() * 10));
-		timers[n] = setTimeout(function(){
-			runSlot(n);
-		}, 50);
-	}
-	startSlot();
-	$('#stop0').click(function(){
-		stopSlot(0);
-	});
-	$('#stop1').click(function(){
-		stopSlot(1);
-	});
-	$('#stop2').click(function(){
-		stopSlot(2);
-	});
-</script>
+<script src="../js/slotmachine.js"></script>
 </body>
 </html>
