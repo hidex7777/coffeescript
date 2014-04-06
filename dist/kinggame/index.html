@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Slot Machine</title>
+	<title>King Game</title>
 	<link rel="icon" href="../favicon.ico" sizes="16x16">
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.15.0/build/cssreset/cssreset-min.css">
 	<link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
@@ -35,23 +35,13 @@
 		<div class="home"><a href="../" class="brand">HOME</a></div>
 	</div><!-- /.nav -->
 	<h1 class="heading1">
-		Slot Machine
+		King Game
 	</h1>
 </div><!-- /.header -->
 <div class="main">
 	<div class="stage">
-		<div class="col">
-			<span id="num0">7</span><br>
-			<input type="button" value="STOP" id="stop0">
-		</div>
-		<div class="col">
-			<span id="num1">7</span><br>
-			<input type="button" value="STOP" id="stop1">
-		</div>
-		<div class="col">
-			<span id="num2">7</span><br>
-			<input type="button" value="STOP" id="stop2">
-		</div>
+		<p>人数：<input type="text" id="num"></p>
+		<p><input type="button" value="王さま曰く！" onclick="kingSaid();"></p>
 		<p id="result">結果</p>
 	</div><!-- /.stage -->
 </div><!-- /.main -->
@@ -66,6 +56,39 @@
 		</div>
 </div><!-- /.footer -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="../js/slotmachine.js"></script>
+<script>
+	function kingSaid(){
+		var orders = [
+			'デコピンしなさい',
+			'クイズを出しなさい',
+			'ほめちぎりなさい',
+			'ドリンクを注ぎなさい'
+		];
+		//0 ~ n -> Math.floor(Math.random() * (n + 1))
+		//0 ~ 3 -> Math.floor(Math.random() * orders.length)
+		var order = orders[Math.floor(Math.random() * orders.length)];
+		//console.log(order);
+		var num = $('#num').val();
+		//4 -> 1..4
+		//0..3 + 1
+		var p1 = Math.floor(Math.random() * (num)) + 1;
+		var p2;
+		//console.log(p1);
+
+		if (num < 2){
+			p2 = 1;
+		}else{
+			do{
+				p2 = Math.floor(Math.random() * (num)) + 1;
+			}while(p1 == p2);
+		}
+		
+		//console.log(p1);
+		//console.log(p2);
+		$("#result").html(
+			'#' + p1 + 'の人が、#' + p2 + 'の人に' + order
+			);
+	}
+</script>
 </body>
 </html>
