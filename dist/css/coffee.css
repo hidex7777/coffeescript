@@ -30,8 +30,18 @@ html body .header .nav
 }
 html body .header .nav .home
 {
+    width: 100px;
     height: 50px;
     margin-left: 50px;
+
+    -webkit-transition: .5s;
+       -moz-transition: .5s;
+         -o-transition: .5s;
+            transition: .5s;
+}
+html body .header .nav .home:hover
+{
+    background-color: #861d55;
 }
 html body .header .nav .home .brand
 {
@@ -40,17 +50,12 @@ html body .header .nav .home .brand
 
     display: block;
 
-    width: 100px;
     padding-top: 12px;
     padding-bottom: 10px;
 
     text-align: center;
 
     color: black;
-}
-html body .header .nav .home .brand:hover
-{
-    background-color: #861d55;
 }
 html body .header .heading1
 {
