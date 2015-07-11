@@ -1,22 +1,34 @@
 (function() {
   'use strict';
-  var draw;
+  var drawCircle, drawHand;
 
   window.onload = function() {
-    draw();
+    drawCircle();
+    drawHand();
   };
 
-  draw = function() {
+  drawCircle = function() {
     var canvas, ctx;
     canvas = document.getElementById('mycanvas');
     if (!canvas || !canvas.getContext) {
       return false;
     }
     ctx = canvas.getContext('2d');
-    ctx.strokeStyle = "#ff0000";
-    ctx.fillRect(10, 10, 50, 50);
-    ctx.strokeRect(10, 10, 10, 10);
-    ctx.clearRect(15, 15, 40, 40);
+    ctx.beginPath();
+    ctx.arc(150, 150, 145, 0 / 180 * Math.PI, 360 / 180 * Math.PI);
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fill();
+  };
+
+  drawHand = function() {
+    var canvas, ctx;
+    canvas = document.getElementById('mycanvas');
+    if (!canvas || !canvas.getContext) {
+      return false;
+    }
+    ctx = canvas.getContext('2d');
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(150, 0, 2, 150);
   };
 
 }).call(this);
