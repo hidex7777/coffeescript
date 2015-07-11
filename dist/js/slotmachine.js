@@ -1,5 +1,5 @@
 (function() {
-  'use struct';
+  'use strict';
   var checkSlot, nums, runSlot, startSlot, stopCount, stopSlot, timers;
 
   timers = [];

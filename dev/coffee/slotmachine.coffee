@@ -1,5 +1,5 @@
 # slot machine coffee
-'use struct'
+'use strict'
 timers = []
 nums = []
 stopCount = 0
