@@ -2,12 +2,22 @@
   //background-color: #fff;
   margin: 0 auto;
   width: 300px;
-  height: 400px;
+  height: 500px;
   .timer {
     width: 300px;
     height: 300px;
   }
   .buttons {
+    margin: 30px auto;
     width: 300px;
+    .startButton {
+      font:{
+        family: sans-serif;
+        weight: bold;
+        size: 150%;
+      }
+      width: 100px;
+      height: 100px;
+    }
   }
 }
