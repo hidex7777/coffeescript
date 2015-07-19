@@ -1,11 +1,13 @@
 #reading booster
 'use strict'
 
+#読み込み終了時に実行
 window.onload = ->
   drawCircle()
   drawHand()
   return
 
+#円を描く
 drawCircle = ->
   canvas = document.getElementById('mycanvas')
   if (!canvas || !canvas.getContext)
@@ -17,6 +19,7 @@ drawCircle = ->
   ctx.fill()
   return
 
+#秒針を描く
 drawHand = ->
   canvas = document.getElementById('mycanvas')
   if (!canvas || !canvas.getContext)
