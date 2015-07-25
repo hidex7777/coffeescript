@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var Clock, formatDigital;
+  var Clock, formatDigital, soundTick;
 
   formatDigital = function(digitalcount) {
     var digitaltext, h, m, s;
@@ -19,6 +19,18 @@
     }
     digitaltext = "" + h + ":" + m + ":" + s;
     $('#digital').text(digitaltext);
+  };
+
+  soundTick = function(digitalcount) {
+    var sine, tick;
+    tick = $('#tick-file').get(0);
+    tick.currentTime = 0;
+    tick.play();
+    if (digitalcount % 8 === 0) {
+      sine = $('#sine-file').get(0);
+      sine.currentTime = 0;
+      sine.play();
+    }
   };
 
   Clock = (function() {
@@ -61,6 +73,7 @@
       this.s(this.cursec);
       this.cursec = this.cursec < 59 ? this.cursec + 1 : 0;
       formatDigital(this.digitalcount);
+      soundTick(this.digitalcount);
       this.digitalcount++;
     };
 

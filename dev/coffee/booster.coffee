@@ -15,6 +15,16 @@ formatDigital = (digitalcount) ->
   $('#digital').text(digitaltext)
   return
 
+soundTick = (digitalcount) ->
+  tick = $('#tick-file').get(0)
+  tick.currentTime = 0
+  tick.play()
+  if digitalcount % 8 == 0
+    sine = $('#sine-file').get(0)
+    sine.currentTime = 0
+    sine.play()
+  return
+
 class Clock
   constructor: (@id) ->
     @timerId = null
@@ -84,7 +94,8 @@ class Clock
       return
     @s @cursec
     @cursec = if @cursec < 59 then @cursec + 1 else 0
-    formatDigital(@digitalcount)
+    formatDigital @digitalcount
+    soundTick @digitalcount
     @digitalcount++
     return
   tickStart: ->
