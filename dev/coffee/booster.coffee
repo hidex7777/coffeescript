@@ -19,7 +19,8 @@ soundTick = (digitalcount) ->
   tick = $('#tick-file').get(0)
   tick.currentTime = 0
   tick.play()
-  if digitalcount % 8 == 0
+  cycle = $('#range').val()
+  if digitalcount % cycle == 0
     sine = $('#sine-file').get(0)
     sine.currentTime = 0
     sine.play()

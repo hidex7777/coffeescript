@@ -27,6 +27,8 @@ module.exports = (grunt) ->
         src: "<%= autoprefixer.dev.src %>"
         dest: "<%= autoprefixer.dev.dest %>"
     csslint:
+      options:
+        csslintrc: '.csslintrc'
       check:
         src: "<%= autoprefixer.dev.src %>"
     copy:

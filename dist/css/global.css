@@ -1,7 +1,6 @@
 a, a:visited
 {
     -webkit-transition: .5s;
-       -moz-transition: .5s;
          -o-transition: .5s;
             transition: .5s;
     text-decoration: none;
@@ -108,7 +107,6 @@ html body .container .main ul li
     margin-left: 15px;
 
     -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
             border-radius: 5px;
     background-color: #fff;
 }
@@ -123,7 +121,6 @@ html body .container .main ul li a img
 {
     border: 1px solid #7f7f7f;
     -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
             border-radius: 5px;
 }
 html .footer
