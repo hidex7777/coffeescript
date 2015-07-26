@@ -22,7 +22,7 @@ html
 }
 html body
 {
-    color: black;
+    color: #000;
     background-color: #dec4ca;
 }
 html body p
@@ -54,7 +54,7 @@ html body .container .header .nav .home .brand
 
     text-align: center;
 
-    color: black;
+    color: #000;
 }
 html body .container .header .nav .home .brand:hover
 {
@@ -68,7 +68,7 @@ html body .container .heading1
 
     padding: 15px 0 15px 30px;
 
-    color: black;
+    color: #000;
 }
 html body .container .heading2
 {
@@ -81,7 +81,7 @@ html body .container .heading2
     margin-left: 3px;
     padding-left: 5px;
 
-    border-left: 3px solid black;
+    border-left: 3px solid #000;
 }
 html body .container .headline
 {
@@ -110,7 +110,7 @@ html body .container .main ul li
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
-    background-color: white;
+    background-color: #fff;
 }
 html body .container .main ul li a
 {
