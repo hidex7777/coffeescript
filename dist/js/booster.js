@@ -80,21 +80,28 @@
 
     Clock.prototype.tickStart = function() {
       var _clock;
-      if (!this.timerId) {
-        _clock = this;
+      _clock = this;
+      if (!this.digitalcount) {
         this.digitalcount = 0;
-        _clock.tickTack();
-        this.timerId = setInterval(function() {
-          _clock.clearAll();
-          _clock.tickTack();
-        }, 1000);
       }
+      _clock.clearAll();
+      _clock.tickTack();
+      this.timerId = setInterval(function() {
+        _clock.clearAll();
+        _clock.tickTack();
+      }, 1000);
+    };
+
+    Clock.prototype.tickPause = function() {
+      clearInterval(this.timerId);
     };
 
     Clock.prototype.tickStop = function() {
       clearInterval(this.timerId);
       this.timerId = null;
       this.s(0);
+      this.digitalcount = 0;
+      formatDigital(this.digitalcount);
     };
 
     Clock.prototype.clearAll = function() {
@@ -110,14 +117,23 @@
     clock = new Clock("mycanvas");
     clock.s();
     $('#start').click(function() {
-      if ($('#start').text() === "START") {
+      if ($('#start').hasClass("state_stop")) {
         clock.tickStart();
-        $('#start').text("STOP");
+        $('#start').removeClass("state_stop");
+        $('#start').addClass("state_play");
       } else {
-        clock.tickStop();
-        clock.clearAll();
-        clock.s();
-        $('#start').text("START");
+        clock.tickPause();
+        $('#start').removeClass("state_play");
+        $('#start').addClass("state_stop");
+      }
+    });
+    $('#stop').click(function() {
+      clock.tickStop();
+      clock.clearAll();
+      clock.s();
+      if ($('#start').hasClass("state_play")) {
+        $('#start').removeClass("state_play");
+        $('#start').addClass("state_stop");
       }
     });
   };

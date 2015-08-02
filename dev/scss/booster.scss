@@ -1,4 +1,5 @@
 @import "mixins.scss";
+@import "pccs.scss";
 
 .booster {
   @include borderbox;
@@ -18,25 +19,44 @@
   .buttons {
     margin: 30px auto;
     width: 300px;
-    .startButton {
+    .startButton, .stopButton {
+      box-sizing: border-box;
       display: inline-block;
       font:{
         family: sans-serif;
         weight: bold;
         size: 130%;
       }
-      width: 90px;
-      height: 90px;
+      width: 50px;
+      height: 50px;
       border-radius: 5px;
-      border: none;
+      border: 2px solid $Gy55;
       background-color: #fff;
       box-shadow: none;
       cursor: pointer;
       text-align: center;
     }
+    .state_stop {
+      background:{
+        image: url('../img/play.png');
+        size: contain;
+      }
+    }
+    .state_play {
+      background:{
+        image: url('../img/pause.png');
+        size: contain;
+      }
+    }
+    .stopButton {
+      background:{
+        image: url('../img/stop.png');
+        size: contain;
+      }
+    }
     .selectsec {
       display: inline-block;
-      width: 200px;
+      width: 180px;
       font-size: 90%;
     }
   }

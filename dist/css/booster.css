@@ -28,7 +28,7 @@
     width: 300px;
     margin: 30px auto;
 }
-.booster .buttons .startButton
+.booster .buttons .startButton, .booster .buttons .stopButton
 {
     font-family: sans-serif;
     font-size: 130%;
@@ -36,18 +36,36 @@
 
     display: inline-block;
 
-    width: 90px;
-    height: 90px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 50px;
+    height: 50px;
 
     cursor: pointer;
     text-align: center;
 
-    border: none;
+    border: 2px solid #878787;
     -webkit-border-radius: 5px;
             border-radius: 5px;
     background-color: #fff;
     -webkit-box-shadow: none;
             box-shadow: none;
+}
+.booster .buttons .state_stop
+{
+    background-image: url('../img/play.png');
+    background-size: contain;
+}
+.booster .buttons .state_play
+{
+    background-image: url('../img/pause.png');
+    background-size: contain;
+}
+.booster .buttons .stopButton
+{
+    background-image: url('../img/stop.png');
+    background-size: contain;
 }
 .booster .buttons .selectsec
 {
@@ -55,7 +73,7 @@
 
     display: inline-block;
 
-    width: 200px;
+    width: 180px;
 }
 .booster .digital
 {

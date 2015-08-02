@@ -71,21 +71,27 @@ class Clock
     @digitalcount++
     return
   tickStart: ->
-    if !@timerId
-      _clock = this
+    #if !@timerId
+    _clock = this
+    if !@digitalcount
       @digitalcount = 0
+    _clock.clearAll()
+    _clock.tickTack()
+    @timerId = setInterval ->
+      _clock.clearAll()
       _clock.tickTack()
-      @timerId = setInterval ->
-        _clock.clearAll()
-        #_clock.drawClock()
-        _clock.tickTack()
-        return
-      , 1000
+      return
+    , 1000
+    return
+  tickPause: ->
+    clearInterval @timerId
     return
   tickStop: ->
     clearInterval @timerId
     @timerId = null
     @s 0
+    @digitalcount = 0
+    formatDigital @digitalcount
     return
   clearAll: ->
     @ctx.clearRect -150, -150, 300, 300
@@ -93,20 +99,26 @@ class Clock
 #読み込み終了時に実行
 window.onload = ->
   clock = new Clock "mycanvas"
-  #clock.drawClock()
   clock.s()
   $('#start').click ->
-    if $('#start > img').attr("class") is "state_stop"
+    if $('#start').hasClass("state_stop")
       clock.tickStart()
-      $('#start > img').removeClass("state_stop")
-      $('#start > img').addClass("state_play")
+      $('#start').removeClass("state_stop")
+      $('#start').addClass("state_play")
     else
       clock.tickPause()
       #clock.tickStop()
       #clock.clearAll()
-      #clock.drawClock()
       #clock.s()
-      $('#start> img').removeClass("state_play")
-      $('#start> img').addClass("state_stop")
+      $('#start').removeClass("state_play")
+      $('#start').addClass("state_stop")
+    return
+  $('#stop').click ->
+    clock.tickStop()
+    clock.clearAll()
+    clock.s()
+    if $('#start').hasClass("state_play")
+      $('#start').removeClass("state_play")
+      $('#start').addClass("state_stop")
     return
   return
