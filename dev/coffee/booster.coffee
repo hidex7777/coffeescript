@@ -96,14 +96,17 @@ window.onload = ->
   #clock.drawClock()
   clock.s()
   $('#start').click ->
-    if $('#start').text() is "START"
+    if $('#start > img').attr("class") is "state_stop"
       clock.tickStart()
-      $('#start').text "STOP"
+      $('#start > img').removeClass("state_stop")
+      $('#start > img').addClass("state_play")
     else
-      clock.tickStop()
-      clock.clearAll()
+      clock.tickPause()
+      #clock.tickStop()
+      #clock.clearAll()
       #clock.drawClock()
-      clock.s()
-      $('#start').text "START"
+      #clock.s()
+      $('#start> img').removeClass("state_play")
+      $('#start> img').addClass("state_stop")
     return
   return
